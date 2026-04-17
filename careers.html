@@ -1,0 +1,613 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Careers | Tensorware Technologies</title>
+  <meta name="description" content="Join Tensorware Technologies – Build the future of AI and enterprise software." />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap"
+    rel="stylesheet" />
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: { sans: ['Inter', 'sans-serif'] },
+          colors: {
+            brand: {
+              yellow: 'var(--c-yellow)',
+              navy: 'var(--c-navy)',
+              dark: 'var(--c-dark)',
+              card: 'var(--c-card)',
+              muted: 'var(--c-muted)',
+              border: 'var(--c-border)',
+            }
+          },
+          animation: {
+            'fade-up': 'fadeUp 0.6s ease forwards',
+          },
+          keyframes: {
+            fadeUp: {
+              '0%': { opacity: '0', transform: 'translateY(24px)' },
+              '100%': { opacity: '1', transform: 'translateY(0)' },
+            }
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    :root {
+      --c-yellow: #5AC1F1;
+      --c-navy: #0A0F2C;
+      --c-dark: #060A1A;
+      --c-card: #0E1430;
+      --c-muted: #8892AA;
+      --c-border: #1C2444;
+      --c-bg: #060A1A;
+      --c-text: #ffffff;
+      --c-glass: rgba(6, 10, 26, .82);
+      --c-grad1: #ffffff;
+      --c-inputbg: #0A0F2C;
+      --c-whyus: linear-gradient(180deg, #060A1A 0%, #0A0F2C 100%);
+    }
+
+    html.light {
+      --c-yellow: #2B88D9;
+      --c-navy: #1E2A5E;
+      --c-dark: #f0f2fa;
+      --c-card: #ffffff;
+      --c-muted: #556080;
+      --c-border: #D0D5E8;
+      --c-bg: #f0f2fa;
+      --c-text: #0A0F2C;
+      --c-glass: rgba(240, 242, 250, .90);
+      --c-grad1: #0A0F2C;
+      --c-inputbg: #f8f9fc;
+      --c-whyus: linear-gradient(180deg, #f0f2fa 0%, #e4e8f5 100%);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      background-color: var(--c-bg);
+      color: var(--c-text);
+      font-family: 'Inter', sans-serif;
+      transition: background-color .35s ease, color .35s ease;
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(28px);
+      transition: opacity .55s ease, transform .55s ease;
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .glass {
+      background: var(--c-glass);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--c-border);
+      transition: background .35s ease;
+    }
+
+    .accent-line {
+      width: 40px;
+      height: 3px;
+      background: var(--c-yellow);
+      margin-bottom: 16px;
+    }
+
+    .product-card {
+      transition: transform .3s ease, box-shadow .3s ease, border-color .3s ease;
+    }
+
+    .product-card:hover {
+      transform: translateY(-6px);
+      border-color: var(--c-yellow) !important;
+      box-shadow: 0 0 28px rgba(90, 193, 241, .15);
+    }
+
+    .grad-text {
+      background: linear-gradient(135deg, var(--c-grad1) 30%, var(--c-yellow) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    input:focus,
+    textarea:focus,
+    select:focus {
+      outline: none;
+      border-color: var(--c-yellow) !important;
+      box-shadow: 0 0 0 3px rgba(90, 193, 241, .18);
+    }
+
+    input,
+    textarea,
+    select {
+      background-color: var(--c-inputbg) !important;
+      color: var(--c-text) !important;
+    }
+
+    #mobile-menu {
+      transition: max-height .35s ease, opacity .35s ease;
+      max-height: 0;
+      overflow: hidden;
+      opacity: 0;
+    }
+
+    #mobile-menu.open {
+      max-height: 400px;
+      opacity: 1;
+    }
+
+    .chip {
+      display: inline-block;
+      background: rgba(90, 193, 241, .12);
+      color: var(--c-yellow);
+      border: 1px solid rgba(90, 193, 241, .3);
+      border-radius: 4px;
+      font-size: .7rem;
+      font-weight: 600;
+      letter-spacing: .06em;
+      padding: 3px 10px;
+      text-transform: uppercase;
+    }
+
+    .theme-btn {
+      width: 36px;
+      height: 36px;
+      background: var(--c-card);
+      border: 1px solid var(--c-border);
+      border-radius: 8px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: border-color .25s ease, background .25s ease;
+      color: var(--c-yellow);
+      flex-shrink: 0;
+    }
+
+    .theme-btn:hover {
+      border-color: var(--c-yellow);
+    }
+
+    .theme-btn .t-sun {
+      display: block;
+    }
+
+    .theme-btn .t-moon {
+      display: none;
+    }
+
+    html.light .theme-btn .t-sun {
+      display: none;
+    }
+
+    html.light .theme-btn .t-moon {
+      display: block;
+    }
+
+    html.light body {
+      color: #0d1a3a !important;
+    }
+
+    html.light h1,
+    html.light h2,
+    html.light h3,
+    html.light h4 {
+      color: #0d1a3a !important;
+    }
+
+    html.light .text-white {
+      color: #0d1a3a !important;
+    }
+
+    html.light .bg-brand-navy.text-white,
+    html.light .bg-brand-navy>.text-white,
+    html.light a.bg-brand-navy,
+    html.light a.bg-brand-navy *,
+    html.light .bg-brand-yellow,
+    html.light .bg-brand-yellow * {
+      color: #ffffff !important;
+    }
+  </style>
+</head>
+
+<body class="text-white antialiased">
+
+  <!-- NAVBAR -->
+  <nav id="navbar" class="fixed top-0 left-0 right-0 z-50 glass">
+    <div class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+      <a href="app.html#hero" class="flex items-center gap-3">
+        <img src="logo.png" alt="Tensorware Logo" class="w-9 h-9 object-contain rounded-lg">
+        <div>
+          <p class="font-bold text-sm leading-none tracking-wide">TENSORWARE</p>
+          <p class="text-brand-muted text-[10px] tracking-widest uppercase leading-none mt-0.5">Technologies Pvt Ltd</p>
+        </div>
+      </a>
+      <ul class="hidden md:flex items-center gap-8 text-sm font-medium text-brand-muted">
+        <li><a href="app.html#about" class="hover:text-white transition-colors">About</a></li>
+        <li><a href="app.html#products" class="hover:text-white transition-colors">Products</a></li>
+        <li><a href="team.html" class="hover:text-white transition-colors">Team</a></li>
+        <li><a href="app.html#pricing" class="hover:text-white transition-colors">Pricing</a></li>
+        <li><a href="careers.html" class="text-white transition-colors">Careers</a></li>
+        <li><a href="app.html#contact" class="hover:text-white transition-colors">Contact</a></li>
+      </ul>
+      <div class="hidden md:flex items-center gap-4">
+        <button id="theme-toggle" class="theme-btn" aria-label="Toggle theme">
+          <svg class="t-sun w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <circle cx="12" cy="12" r="4" />
+            <path stroke-linecap="round"
+              d="M12 2v2M12 20v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M2 12h2M20 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42" />
+          </svg>
+          <svg class="t-moon w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z" />
+          </svg>
+        </button>
+        <a href="app.html#contact"
+          class="inline-flex items-center gap-2 bg-brand-yellow text-white font-bold text-sm px-5 py-2.5 hover:bg-blue-400 transition-colors">
+          Get in Touch
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+          </svg>
+        </a>
+      </div>
+      <div class="md:hidden flex items-center gap-3">
+        <button id="theme-toggle-mobile" class="theme-btn"><svg class="t-sun w-4 h-4" fill="none" stroke="currentColor"
+            stroke-width="2" viewBox="0 0 24 24">
+            <circle cx="12" cy="12" r="4" />
+            <path stroke-linecap="round"
+              d="M12 2v2M12 20v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M2 12h2M20 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42" />
+          </svg><svg class="t-moon w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z" />
+          </svg></button>
+        <button id="burger" class="text-brand-muted hover:text-white transition-colors">
+          <svg id="icon-open" class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" />
+          </svg>
+          <svg id="icon-close" class="w-6 h-6 hidden" fill="none" stroke="currentColor" stroke-width="2"
+            viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+          </svg>
+        </button>
+      </div>
+    </div>
+    <div id="mobile-menu" class="md:hidden border-t border-brand-border px-6 py-0">
+      <ul class="flex flex-col gap-4 py-5 text-sm font-medium text-brand-muted">
+        <li><a href="app.html#about" class="hover:text-white transition-colors block">About</a></li>
+        <li><a href="app.html#products" class="hover:text-white transition-colors block">Products</a></li>
+        <li><a href="team.html" class="hover:text-white transition-colors block">Our Team</a></li>
+        <li><a href="app.html#pricing" class="hover:text-white transition-colors block">Pricing</a></li>
+        <li><a href="careers.html" class="text-white transition-colors block">Careers</a></li>
+        <li><a href="app.html#contact" class="hover:text-white transition-colors block">Contact</a></li>
+        <li><a href="app.html#contact"
+            class="bg-brand-yellow text-white font-bold px-4 py-2.5 inline-block hover:bg-blue-400 transition-colors">Get
+            in Touch</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section class="pt-32 pb-20 relative overflow-hidden">
+    <div class="absolute inset-0 pointer-events-none"
+      style="background-image:linear-gradient(rgba(90, 193, 241, .04) 1px,transparent 1px),linear-gradient(90deg,rgba(90, 193, 241, .04) 1px,transparent 1px);background-size:60px 60px;">
+    </div>
+    <div class="max-w-7xl mx-auto px-6 text-center relative z-10">
+      <span class="chip mb-5 inline-block">Careers</span>
+      <h1 class="text-5xl md:text-7xl font-black mb-6"><span class="grad-text">Build the Future</span> <br />With Us.
+      </h1>
+      <p class="text-brand-muted text-lg max-w-2xl mx-auto mb-10">Help us engineer tomorrow's software. We're looking
+        for passionate minds to join our mission in AI and enterprise tech.</p>
+    </div>
+  </section>
+
+  <!-- POSITIONS -->
+  <section class="py-20 border-t border-brand-border">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <!-- Job 1 -->
+        <div class="product-card bg-brand-card border border-brand-border p-8 reveal">
+          <div class="accent-line"></div>
+          <h3 class="text-xl font-bold mb-2">Flutter Developer</h3>
+          <p class="text-brand-muted text-sm mb-6">Build mission-critical cross-platform mobile applications using
+            Flutter & Dart for global scale.</p>
+          <ul class="text-xs text-brand-muted space-y-2 mb-8">
+            <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 bg-brand-yellow rounded-full"></span> Flutter,
+              Dart, Firebase</li>
+            <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 bg-brand-yellow rounded-full"></span> 1+ Years
+              Exp</li>
+            <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 bg-brand-yellow rounded-full"></span> Remote /
+              Hybrid</li>
+          </ul>
+          <a href="#apply"
+            class="block text-center border border-brand-yellow text-brand-yellow font-bold py-3 hover:bg-brand-yellow hover:text-white transition-colors">Apply
+            Now</a>
+        </div>
+        <!-- Job 2 -->
+        <div class="product-card bg-brand-card border border-brand-border p-8 reveal" style="transition-delay:.1s">
+          <div class="accent-line"></div>
+          <h3 class="text-xl font-bold mb-2">Full Stack Developer</h3>
+          <p class="text-brand-muted text-sm mb-6">Design and implement scalable web applications and robust
+            architectural solutions for enterprise tech.</p>
+          <ul class="text-xs text-brand-muted space-y-2 mb-8">
+            <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 bg-brand-yellow rounded-full"></span> Node.js,
+              React, SQL/NoSQL</li>
+            <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 bg-brand-yellow rounded-full"></span> 1+ Years
+              Exp</li>
+            <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 bg-brand-yellow rounded-full"></span> Full-time
+            </li>
+          </ul>
+          <a href="#apply"
+            class="block text-center border border-brand-yellow text-brand-yellow font-bold py-3 hover:bg-brand-yellow hover:text-white transition-colors">Apply
+            Now</a>
+        </div>
+        <!-- Job 3 -->
+        <div class="product-card bg-brand-card border border-brand-border p-8 reveal" style="transition-delay:.2s">
+          <div class="accent-line"></div>
+          <h3 class="text-xl font-bold mb-2">AIML Developer</h3>
+          <p class="text-brand-muted text-sm mb-6">Engineer intelligent systems using cutting-edge deep learning and
+            computer vision models.</p>
+          <ul class="text-xs text-brand-muted space-y-2 mb-8">
+            <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 bg-brand-yellow rounded-full"></span> Python,
+              PyTorch, CV/NLP</li>
+            <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 bg-brand-yellow rounded-full"></span> AI
+              Research Portfolio</li>
+            <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 bg-brand-yellow rounded-full"></span> Full-time
+            </li>
+          </ul>
+          <a href="#apply"
+            class="block text-center border border-brand-yellow text-brand-yellow font-bold py-3 hover:bg-brand-yellow hover:text-white transition-colors">Apply
+            Now</a>
+        </div>
+        <!-- Job 4 -->
+        <div class="product-card bg-brand-card border border-brand-border p-8 reveal">
+          <div class="accent-line"></div>
+          <h3 class="text-xl font-bold mb-2">DevOps Engineer</h3>
+          <p class="text-brand-muted text-sm mb-6">Automate cloud infrastructure and optimize deployment pipelines for
+            high-availability systems.</p>
+          <ul class="text-xs text-brand-muted space-y-2 mb-8">
+            <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 bg-brand-yellow rounded-full"></span> AWS,
+              Docker, Kubernetes</li>
+            <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 bg-brand-yellow rounded-full"></span> CI/CD
+              Automation</li>
+            <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 bg-brand-yellow rounded-full"></span> Remote
+              Hybrid</li>
+          </ul>
+          <a href="#apply"
+            class="block text-center border border-brand-yellow text-brand-yellow font-bold py-3 hover:bg-brand-yellow hover:text-white transition-colors">Apply
+            Now</a>
+        </div>
+        <!-- Internship 1 -->
+        <div class="product-card bg-brand-card border border-brand-border p-8 reveal" style="transition-delay:.1s">
+          <div class="accent-line"></div>
+          <h3 class="text-xl font-bold mb-2">3 Months Internship</h3>
+          <p class="text-brand-muted text-sm mb-6">Intensive short-term program for rapid skill acquisition in software
+            engineering and professional tools.</p>
+          <ul class="text-xs text-brand-muted space-y-2 mb-8">
+            <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 bg-brand-yellow rounded-full"></span> Paid
+              Portfolio Review</li>
+            <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 bg-brand-yellow rounded-full"></span> Beginner
+              Friendly</li>
+            <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 bg-brand-yellow rounded-full"></span> Remote
+              Support</li>
+          </ul>
+          <a href="#apply"
+            class="block text-center border border-brand-yellow text-brand-yellow font-bold py-3 hover:bg-brand-yellow hover:text-white transition-colors">Apply
+            Now</a>
+        </div>
+        <!-- Internship 2 -->
+        <div class="product-card bg-brand-card border border-brand-border p-8 reveal" style="transition-delay:.2s">
+          <div class="accent-line"></div>
+          <h3 class="text-xl font-bold mb-2">6 Months Internship</h3>
+          <p class="text-brand-muted text-sm mb-6">In-depth project-based internship focused on production-grade
+            development and team collaboration.</p>
+          <ul class="text-xs text-brand-muted space-y-2 mb-8">
+            <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 bg-brand-yellow rounded-full"></span> Full
+              Stack Exposure</li>
+            <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 bg-brand-yellow rounded-full"></span>
+              Certificate & LOR</li>
+            <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 bg-brand-yellow rounded-full"></span>
+              Performance Bonus</li>
+          </ul>
+          <a href="#apply"
+            class="block text-center border border-brand-yellow text-brand-yellow font-bold py-3 hover:bg-brand-yellow hover:text-white transition-colors">Apply
+            Now</a>
+        </div>
+        <!-- Internship 3 -->
+        <div class="product-card bg-brand-card border border-brand-border p-8 reveal">
+          <div class="accent-line"></div>
+          <h3 class="text-xl font-bold mb-2">11 Months Internship</h3>
+          <p class="text-brand-muted text-sm mb-6">Long-term residency program for future engineering leaders. Deep dive
+            into enterprise architecture.</p>
+          <ul class="text-xs text-brand-muted space-y-2 mb-8">
+            <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 bg-brand-yellow rounded-full"></span> PPO
+              Opportunity</li>
+            <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 bg-brand-yellow rounded-full"></span> Dedicated
+              Project Lead</li>
+            <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 bg-brand-yellow rounded-full"></span> Career
+              Mentorship</li>
+          </ul>
+          <a href="#apply"
+            class="block text-center border border-brand-yellow text-brand-yellow font-bold py-3 hover:bg-brand-yellow hover:text-white transition-colors">Apply
+            Now</a>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- APPLY FORM -->
+  <section id="apply" class="py-20 border-t border-brand-border bg-brand-navy/30">
+    <div class="max-w-3xl mx-auto px-6">
+      <div class="text-center mb-12">
+        <h2 class="text-4xl font-black mb-4">Send Your Application</h2>
+        <p class="text-brand-muted">Fill out the form below and attach a link to your resume/portfolio.</p>
+      </div>
+      <form id="career-form" class="bg-brand-card border border-brand-border p-8 reveal">
+        <div class="grid sm:grid-cols-2 gap-5 mb-5">
+          <input type="text" name="full_name" placeholder="Full Name" required
+            class="w-full border border-brand-border text-sm px-4 py-3" />
+          <input type="email" name="email" placeholder="Email Address" required
+            class="w-full border border-brand-border text-sm px-4 py-3" />
+        </div>
+        <div class="mb-5">
+          <select name="position" class="w-full border border-brand-border text-sm px-4 py-3 appearance-none cursor-pointer">
+            <option value="">Select Position...</option>
+            <optgroup label="Software Roles">
+              <option value="flutter">Flutter Developer</option>
+              <option value="fullstack">Full Stack Developer</option>
+              <option value="aiml">AIML Developer</option>
+              <option value="devops">DevOps Engineer</option>
+            </optgroup>
+            <optgroup label="Internships">
+              <option value="internship3">3 Months Internship</option>
+              <option value="internship6">6 Months Internship</option>
+              <option value="internship11">11 Months Internship</option>
+            </optgroup>
+            <option value="other">Other / General Interest</option>
+          </select>
+        </div>
+        <div class="mb-5">
+          <input type="url" name="portfolio_link" placeholder="Resume / LinkedIn / Portfolio Link" required
+            class="w-full border border-brand-border text-sm px-4 py-3" />
+        </div>
+        <div class="mb-6">
+          <textarea rows="4" name="message" placeholder="Briefly tell us why you want to join Tensorware..." required
+            class="w-full border border-brand-border text-sm px-4 py-3 resize-none"></textarea>
+        </div>
+        <p id="career-status" class="text-xs mb-4 hidden"></p>
+        <button type="submit" id="career-submit-btn"
+          class="w-full bg-brand-yellow text-white font-bold py-3.5 hover:bg-blue-400 transition-colors">Submit
+          Application</button>
+      </form>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="border-t border-brand-border py-16">
+    <div class="max-w-7xl mx-auto px-6 grid sm:grid-cols-2 lg:grid-cols-4 gap-10">
+      <div class="lg:col-span-1">
+        <a href="app.html#hero" class="flex items-center gap-3 mb-5">
+          <img src="logo.png" alt="Tensorware Logo" class="w-9 h-9 object-contain">
+          <div>
+            <p class="font-bold text-sm leading-none">TENSORWARE</p>
+            <p class="text-brand-muted text-[10px] uppercase mt-0.5">Technologies Pvt Ltd</p>
+          </div>
+        </a>
+        <p class="text-brand-muted text-xs leading-relaxed">Engineering tomorrow's software — one intelligent system at
+          a time.</p>
+      </div>
+      <div>
+        <p class="font-bold text-sm mb-5">Products</p>
+        <ul class="space-y-2 text-brand-muted text-sm">
+          <li><a href="app.html#products" class="hover:text-brand-yellow">TensorMind AI</a></li>
+          <li><a href="app.html#products" class="hover:text-brand-yellow">CloudStack Pro</a></li>
+          <li><a href="app.html#products" class="hover:text-brand-yellow">DataPulse</a></li>
+        </ul>
+      </div>
+      <div>
+        <p class="font-bold text-sm mb-5">Company</p>
+        <ul class="space-y-2 text-brand-muted text-sm">
+          <li><a href="app.html#about" class="hover:text-brand-yellow">About Us</a></li>
+          <li><a href="team.html" class="hover:text-brand-yellow">Our Team</a></li>
+          <li><a href="careers.html" class="text-brand-yellow">Careers</a></li>
+          <li><a href="app.html#contact" class="hover:text-brand-yellow">Contact</a></li>
+        </ul>
+      </div>
+      <div>
+        <p class="font-bold text-sm mb-5">Social</p>
+        <div class="flex gap-4">
+          <a href="#" class="text-brand-muted hover:text-brand-yellow">LinkedIn</a>
+          <a href="#" class="text-brand-muted hover:text-brand-yellow">Twitter</a>
+          <a href="#" class="text-brand-muted hover:text-brand-yellow">GitHub</a>
+        </div>
+      </div>
+    </div>
+    <div class="max-w-7xl mx-auto px-6 pt-10 mt-10 border-t border-brand-border text-center text-xs text-brand-muted">
+      © 2026 Tensorware Technologies Pvt Ltd. All rights reserved.
+    </div>
+  </footer>
+
+  <script>
+      /* Theme */
+      (function () {
+        var html = document.documentElement;
+        var saved = localStorage.getItem('tw-theme');
+        if (saved === 'light') html.classList.add('light');
+        function applyTheme(l) {
+          if (l) { html.classList.add('light'); localStorage.setItem('tw-theme', 'light'); }
+          else { html.classList.remove('light'); localStorage.setItem('tw-theme', 'dark'); }
+        }
+        var btn = document.getElementById('theme-toggle'), btnMob = document.getElementById('theme-toggle-mobile');
+        if (btn) btn.onclick = function () { applyTheme(!html.classList.contains('light')); };
+        if (btnMob) btnMob.onclick = function () { applyTheme(!html.classList.contains('light')); };
+      }());
+
+    /* Menu */
+    var burger = document.getElementById('burger'), mob = document.getElementById('mobile-menu'), open = document.getElementById('icon-open'), close = document.getElementById('icon-close');
+    burger.onclick = function () { mob.classList.toggle('open'); open.classList.toggle('hidden'); close.classList.toggle('hidden'); };
+
+    /* Reveal */
+    var reveals = document.querySelectorAll('.reveal');
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target); } });
+    }, { threshold: 0.1 });
+    reveals.forEach(function (el) { io.observe(el); });
+
+    /* Career Form Submission */
+    var careerForm = document.getElementById('career-form');
+    var careerStatus = document.getElementById('career-status');
+    var careerSubmitBtn = document.getElementById('career-submit-btn');
+
+    if (careerForm) {
+      careerForm.addEventListener('submit', function (e) {
+        e.preventDefault();
+        
+        careerSubmitBtn.disabled = true;
+        var originalText = careerSubmitBtn.textContent;
+        careerSubmitBtn.textContent = 'Sending...';
+
+        var formData = new FormData(careerForm);
+
+        fetch('https://formspree.io/f/xjgjynqr', {
+          method: 'POST',
+          body: formData,
+          headers: {
+            'Accept': 'application/json'
+          }
+        }).then(function (response) {
+          if (response.ok) {
+            careerStatus.textContent = "✓ Application sent successfully! We'll review it soon.";
+            careerStatus.className = 'text-xs mb-4 text-green-400';
+            careerStatus.classList.remove('hidden');
+            careerForm.reset();
+          } else {
+            careerStatus.textContent = '⚠ Oops! There was a problem submitting your application.';
+            careerStatus.className = 'text-xs mb-4 text-red-400';
+            careerStatus.classList.remove('hidden');
+          }
+        }).catch(function (error) {
+          careerStatus.textContent = '⚠ Network error. Please try again later.';
+          careerStatus.className = 'text-xs mb-4 text-red-400';
+          careerStatus.classList.remove('hidden');
+        }).finally(function () {
+          careerSubmitBtn.disabled = false;
+          careerSubmitBtn.textContent = originalText;
+        });
+      });
+    }
+  </script>
+</body>
+
+</html>
